@@ -1,4 +1,4 @@
-import { Product } from "../../models/producets";
+import { Product } from "../../models/products";
 import { Selector } from "../types";
 
 export const productsListSelector: Selector<Product[]> = state => state.productsReducer.productsList;

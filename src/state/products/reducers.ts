@@ -1,4 +1,4 @@
-import { Product } from "../../models/producets";
+import { Product } from "../../models/products";
 import { ProductsReducer, ProductsState } from "./types";
 
 import { remove } from "../../utils/array";

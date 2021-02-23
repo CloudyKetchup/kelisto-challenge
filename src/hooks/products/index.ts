@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Product } from "../../models/producets";
+import { Product } from "../../models/products";
 
 import { basketItemsSelector, clearBasket, moveProductToBasket, restoreProductFromBasket } from "../../state/products";
 

@@ -1,4 +1,4 @@
-import { Product } from "../../models/producets";
+import { Product } from "../../models/products";
 
 export type ProductsGridProps = { products: Product[] };
 

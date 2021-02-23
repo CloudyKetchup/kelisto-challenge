@@ -3,7 +3,7 @@ import { ComponentType, FC } from "react";
 import { useSelector } from "react-redux";
 import { productsListSelector } from "../../../state/products";
 
-import { Product } from "../../../models/producets";
+import { Product } from "../../../models/products";
 
 type WithProducts = {
   products: Product[]
