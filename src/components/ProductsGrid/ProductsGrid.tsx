@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../state/products";
 
 import { Box, Grid, makeStyles } from "@material-ui/core";
-import ProductItem from "./ProductItem";
+import { ProductItem } from "./ProductItem";
 
 import { ProductsGridProps } from "./types";
 
@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const ProductsGrid: FC<ProductsGridProps> = ({ products }) => {
+const ProductsGrid: FC<ProductsGridProps> = ({ products, ProductComponent = ProductItem }) => {
   const classes  = useStyles();
   const dispatch = useDispatch();
 
@@ -24,10 +24,10 @@ const ProductsGrid: FC<ProductsGridProps> = ({ products }) => {
 
   return (
     <Box className={classes.root}>
-      <Grid spacing={4} container>
+      <Grid spacing={4} container alignItems="flex-start" justify="center">
         {products.map(product => (
           <Grid key={product.productId} item>
-            <ProductItem data={product}/>
+            <ProductComponent data={product}/>
           </Grid>
         ))}
       </Grid>
