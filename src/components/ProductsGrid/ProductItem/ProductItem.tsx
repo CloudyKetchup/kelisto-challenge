@@ -5,13 +5,14 @@ import ProductDescription from "./ProductDescription";
 
 import { useBasket } from "../../../hooks";
 import { useProductItemStyles } from "../hooks";
+import { withResponsiveProductItem } from "./decorators";
 
 import { ProductProps } from "../types";
 import clsx from "clsx";
 
 const useStyles = useProductItemStyles;
 
-const ProductItem: FC<ProductProps> = ({ data }) => {
+const ProductItem: FC<ProductProps> = ({ data, style }) => {
   const { basketItems, moveToBasket } = useBasket();
   const classes  = useStyles();
   const inBasket = basketItems.includes(data);
@@ -20,7 +21,7 @@ const ProductItem: FC<ProductProps> = ({ data }) => {
   const image = require(`../../../data/${data.image}`).default;
 
   return (
-    <Paper className={classes.root} variant="elevation" elevation={3}>
+    <Paper className={classes.root} variant="elevation" elevation={3} style={style}>
       <Grid direction="column" container>
         <Grid item>
           <img className={classes.productImage} src={image}/>
@@ -48,4 +49,4 @@ const ProductItem: FC<ProductProps> = ({ data }) => {
   );
 };
 
-export default ProductItem;
+export default withResponsiveProductItem(ProductItem);

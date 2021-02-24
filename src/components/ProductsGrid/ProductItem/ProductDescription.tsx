@@ -8,9 +8,9 @@ import { ProductDescriptionProps } from "./types";
 
 const DescriptionTooltip = withStyles(({ palette, shadows }) => ({
   tooltip: {
-    backgroundColor: palette.common.white,
-    color: palette.text.primary,
+    backgroundColor: palette.background.paper,
     boxShadow: shadows[1],
+    color: palette.text.primary,
     fontSize: 11,
   }
 }))(Tooltip);

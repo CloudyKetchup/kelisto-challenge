@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { FC, forwardRef } from "react";
 
 import {
   Dialog,
@@ -6,14 +6,13 @@ import {
   DialogContent,
   DialogTitle,
   Button,
-  DialogProps,
   Fade,
   Divider,
   makeStyles,
   Typography,
   IconButton,
   Box,
-  Grid
+  Grid,
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import ListAltIcon from '@material-ui/icons/ListAlt';
@@ -21,10 +20,9 @@ import { ProductsGrid } from "../ProductsGrid";
 import BasketItem from "./BasketItem";
 
 import { useBasket } from "../../hooks";
+import { withResponsiveBasket } from "./decorators";
 
-type ProductsBasketProps = Omit<DialogProps, "onClose"> & {
-  onClose: () => void
-};
+import { ProductsBasketProps } from "./types";
 
 const useStyles = makeStyles(({ palette, spacing }) => ({
   paper: {
@@ -74,7 +72,7 @@ const EmptyBasket = () => {
   );
 };
 
-const ProductsBasket = forwardRef<HTMLDivElement, ProductsBasketProps>(({ onClose, ...props }, ref) => {
+const ProductsBasket: FC<ProductsBasketProps> = withResponsiveBasket(({ onClose, ContentProps, ...props }) => {
   const { basketItems, clearBasket } = useBasket();
   const classes = useStyles();
 
@@ -90,9 +88,7 @@ const ProductsBasket = forwardRef<HTMLDivElement, ProductsBasketProps>(({ onClos
       TransitionComponent={Fade}
       scroll="paper"
       {...props}
-      classes={{
-        paper: classes.paper
-      }}
+      classes={{ paper: classes.paper }}
       open
     >
       <DialogTitle>
@@ -102,7 +98,7 @@ const ProductsBasket = forwardRef<HTMLDivElement, ProductsBasketProps>(({ onClos
         </IconButton>
       </DialogTitle>
       <Divider/>
-      <DialogContent className={classes.content}>
+      <DialogContent className={classes.content} {...ContentProps}>
         {basketItems.length > 0 ? <ProductsGrid products={basketItems} ProductComponent={BasketItem}/> : <EmptyBasket/>}
       </DialogContent>
       <Divider/>
@@ -118,4 +114,4 @@ const ProductsBasket = forwardRef<HTMLDivElement, ProductsBasketProps>(({ onClos
   );
 });
 
-export default ProductsBasket;
+export default forwardRef<HTMLDivElement, ProductsBasketProps>(props => <ProductsBasket {...props}/>);

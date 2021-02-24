@@ -1,4 +1,5 @@
-import { ComponentType } from "react";
+import { ComponentType, CSSProperties } from "react";
+
 import { Product } from "../../models/products";
 
 export type ProductsGridProps = {
@@ -6,4 +7,7 @@ export type ProductsGridProps = {
   ProductComponent?: ComponentType<ProductProps>
 };
 
-export type ProductProps = { data: Product };
+export type ProductProps = {
+  data: Product
+  style?: CSSProperties
+};

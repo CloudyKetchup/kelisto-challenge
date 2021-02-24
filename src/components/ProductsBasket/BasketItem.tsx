@@ -8,6 +8,8 @@ import { ProductProps, useProductItemStyles } from "../ProductsGrid";
 
 import { useBasket, useHover } from "../../hooks";
 
+import clsx from "clsx";
+
 type ClearOverlayProps = { onClick: () => void };
 
 const useStyles = makeStyles(({ palette }) => ({
@@ -54,7 +56,7 @@ const BasketItem: FC<ProductProps> = ({ data }) => {
           <Grid item>
             <img className={productItemClasses.productImage} src={image} />
           </Grid>
-          <Grid className={productItemClasses.productDescription} item>
+          <Grid className={clsx(productItemClasses.productDescription, productItemClasses.productBody)} item>
             <ProductDescription
               title={data.title}
               sku={data.sku}

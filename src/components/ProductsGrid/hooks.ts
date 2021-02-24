@@ -6,9 +6,9 @@ export const useProductItemStyles = makeStyles(({ palette }) => ({
   },
   productImage: {
     margin: "auto",
-    objectFit: "cover",
+    objectFit: "contain",
     height: 200,
-    width: 200
+    width: "100%",
   },
   productDescription: {
     maxHeight: 88,
