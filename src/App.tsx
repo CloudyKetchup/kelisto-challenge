@@ -3,10 +3,12 @@ import { Switch, Route, useHistory } from "react-router";
 
 import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core";
 import { ProductsGrid } from "./components/ProductsGrid";
-import { useBasket } from "./hooks";
+import { ProductsBasket } from "./components/ProductsBasket";
 
-import { withProducts } from "./components/decorators";
-import ProductsBasket from "./components/ProductsBasket/ProductsBasket";
+import { useBasket } from "./hooks";
+import { withProducts, withTheme } from "./components/decorators";
+
+import { lightThemeOptions } from "./theme";
 
 const FilledProductsGrid = withProducts(ProductsGrid);
 
@@ -39,21 +41,21 @@ const App = () => {
   const history = useHistory();
   const classes = useStyles();
 
-  const onBasketClick = () => history.push("/basket");
+  const onNavigate = (path: string) => () => history.push(path);
 
   return (
     <Box className={classes.root}>
       <Box className={classes.rootContainer}>
         <Grid direction="column" spacing={4} container>
           <Grid item>
-            <Button className={classes.basketButton} variant="contained" onClick={onBasketClick}>
+            <Button className={classes.basketButton} variant="contained" onClick={onNavigate("/basket")}>
               <Typography>Your basket {basketItems.length > 0 && `(${basketItems.length} items)`}</Typography>
             </Button>
           </Grid>
           <Grid className={classes.productsContainer} item>
             <FilledProductsGrid />
             <Switch>
-              <Route path="/basket" component={ProductsBasket} />
+              <Route path="/basket" render={() => <ProductsBasket open onClose={onNavigate("/")}/>} />
             </Switch>
           </Grid>
         </Grid>
@@ -62,4 +64,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withTheme(lightThemeOptions)(App);
