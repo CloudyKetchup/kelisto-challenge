@@ -32,13 +32,21 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "link-module-alias"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "_moduleAliases": {
+    "models": "src/models",
+    "state": "src/state",
+    "utils": "src/utils",
+    "hooks": "src/hooks",
+    "api": "src/api"
   },
   "browserslist": {
     "production": [
@@ -51,5 +59,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "link-module-alias": "^1.2.0"
   }
 }
