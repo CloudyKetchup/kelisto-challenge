@@ -10,7 +10,7 @@ The following scripts are available:
 
 #
 
-To run the application inside docker, there are the following requirements:
+To run the application inside docker, the following requirements should installed for this:
 
 - docker
 - docker-compose
@@ -23,6 +23,8 @@ docker-compose up --build
 # add -d at the end if you want to run in detached mode
 # --build ensures that the fresh image will be build, even if old one exists
 ```
+
+After this, checkout http://localhost:5000 for the running application.
 
 ## Module aliases
 
