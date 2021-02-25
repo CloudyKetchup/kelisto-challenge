@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 
 import { useDispatch } from "react-redux";
-import { fetchProducts } from "../../state/products";
+import { fetchProducts } from "state/products";
 
 import { Box, Grid, makeStyles } from "@material-ui/core";
 import { ProductItem } from "./ProductItem";
@@ -14,10 +14,17 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+/***
+ * Responsive grid for rendering the products
+ * 
+ * @param {ProductsGridProps} props
+ * @constructor
+ */
 const ProductsGrid: FC<ProductsGridProps> = ({ products, ProductComponent = ProductItem }) => {
   const classes  = useStyles();
   const dispatch = useDispatch();
 
+  // fetch the products
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);

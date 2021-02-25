@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { Grid, Paper, Button } from "@material-ui/core";
 import ProductDescription from "./ProductDescription";
 
-import { useBasket } from "../../../hooks";
+import { useBasket } from "hooks";
 import { useProductItemStyles } from "../hooks";
 import { withResponsiveProductItem } from "./decorators";
 
@@ -12,6 +12,12 @@ import clsx from "clsx";
 
 const useStyles = useProductItemStyles;
 
+/***
+ * Product item component
+ * 
+ * @param {ProductProps} props
+ * @constructor
+ */
 const ProductItem: FC<ProductProps> = ({ data, style }) => {
   const { basketItems, moveToBasket } = useBasket();
   const classes  = useStyles();

@@ -5,7 +5,7 @@ import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core";
 import { ProductsGrid } from "./components/ProductsGrid";
 import { ProductsBasket } from "./components/ProductsBasket";
 
-import { useBasket } from "./hooks";
+import { useBasket } from "hooks";
 import { withProducts, withTheme } from "./components/decorators";
 
 import { lightThemeOptions } from "./theme";

@@ -19,7 +19,7 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 import { ProductsGrid } from "../ProductsGrid";
 import BasketItem from "./BasketItem";
 
-import { useBasket } from "../../hooks";
+import { useBasket } from "hooks";
 import { withResponsiveBasket } from "./decorators";
 
 import { ProductsBasketProps } from "./types";
@@ -53,6 +53,11 @@ const useStyles = makeStyles(({ palette, spacing }) => ({
   }
 }));
 
+/***
+ * Page for the empty basket
+ * 
+ * @constructor
+ */
 const EmptyBasket = () => {
   const classes = useStyles();
 
@@ -72,6 +77,14 @@ const EmptyBasket = () => {
   );
 };
 
+/***
+ * Products basket dialog component
+ * 
+ * Using withResponsiveBasket decorator for the responsive layout
+ * 
+ * @param {ProductsBasketProps} props
+ * @constructor
+ */
 const ProductsBasket: FC<ProductsBasketProps> = withResponsiveBasket(({ onClose, ContentProps, ...props }) => {
   const { basketItems, clearBasket } = useBasket();
   const classes = useStyles();
@@ -79,7 +92,7 @@ const ProductsBasket: FC<ProductsBasketProps> = withResponsiveBasket(({ onClose,
   const onSubmit = () => {
     onClose();
 
-    //TODO: fire a notification
+    //TODO: on submit logic
   };
 
   return (
@@ -114,4 +127,5 @@ const ProductsBasket: FC<ProductsBasketProps> = withResponsiveBasket(({ onClose,
   );
 });
 
+// forward ref to the material ui dialog component
 export default forwardRef<HTMLDivElement, ProductsBasketProps>(props => <ProductsBasket {...props}/>);

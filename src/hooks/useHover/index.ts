@@ -1,5 +1,10 @@
 import { RefObject, useEffect, useRef, useState } from "react";
 
+/***
+ * Hook for checking if the mouse is hovering the component
+ * 
+ * @returns ref object and hovering boolean
+ */
 const useHover = (): [RefObject<HTMLDivElement | null>, boolean] => {
   const [value, setValue] = useState(false);
 

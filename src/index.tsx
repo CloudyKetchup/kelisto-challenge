@@ -4,7 +4,7 @@ import { Router } from 'react-router';
 import { createHashHistory } from 'history';
 
 import { Provider } from 'react-redux';
-import { store } from './state';
+import { store } from 'state';
 
 import App from './App';
 

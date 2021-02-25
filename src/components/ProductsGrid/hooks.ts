@@ -1,5 +1,8 @@
 import { makeStyles } from "@material-ui/core";
 
+/***
+ * Styles for the product item component
+ */
 export const useProductItemStyles = makeStyles(({ palette }) => ({
   root: {
     width: 250

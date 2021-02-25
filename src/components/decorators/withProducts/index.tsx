@@ -1,15 +1,21 @@
 import { ComponentType, FC } from "react";
 
 import { useSelector } from "react-redux";
-import { productsListSelector } from "../../../state/products";
+import { productsListSelector } from "state/products";
 
-import { Product } from "../../../models/products";
+import { Product } from "models/products";
 
 type WithProducts = {
   products: Product[]
 };
 
-const withProducts = (WrappedComponent: ComponentType<WithProducts>) => {
+/***
+ * Decorator for passing the products to the component via props
+ * 
+ * @param {ComponentType<WithProducts>} WrappedComponent
+ * @returns {ComponentType} component with injected products
+ */
+const withProducts = (WrappedComponent: ComponentType<WithProducts>): ComponentType => {
 
   const WrapperComponent: FC = () => {
     const products = useSelector(productsListSelector);

@@ -1,6 +1,6 @@
 import { ComponentType, CSSProperties } from "react";
 
-import { Product } from "../../models/products";
+import { Product } from "models/products";
 
 export type ProductsGridProps = {
   products: Product[]

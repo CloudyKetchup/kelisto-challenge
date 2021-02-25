@@ -6,7 +6,7 @@ import { ProductDescription } from "../ProductsGrid";
 
 import { ProductProps, useProductItemStyles } from "../ProductsGrid";
 
-import { useBasket, useHover } from "../../hooks";
+import { useBasket, useHover } from "hooks";
 
 import clsx from "clsx";
 
@@ -28,6 +28,12 @@ const useStyles = makeStyles(({ palette }) => ({
   }
 }));
 
+/***
+ * On mouse hover overlay for the basket item
+ * 
+ * @param {ClearOverlayProps} props
+ * @constructor
+ */
 const ClearOverlay: FC<ClearOverlayProps> = ({ onClick }) => {
   const classes = useStyles();
 
@@ -40,12 +46,19 @@ const ClearOverlay: FC<ClearOverlayProps> = ({ onClick }) => {
   );
 };
 
+/***
+ * Component for the product representation in the basket
+ * 
+ * @param {ProductProps} props
+ * @constructor
+ */
 const BasketItem: FC<ProductProps> = ({ data }) => {
-  const classes = useStyles();
-  const productItemClasses  = useProductItemStyles();
-  const [hoverRef, isHover] = useHover();
+  const productItemClasses    = useProductItemStyles();
+  const [hoverRef, isHover]   = useHover();
   const { restoreFromBasket } = useBasket();
+  const classes = useStyles();
 
+  // load the image as static file, usually we would load from an url
   const image = require(`../../data/${data.image}`).default;
 
   return (
